@@ -16,24 +16,6 @@ button.addEventListener('click', () => {
     }
 });
 
-// ===================== Проверка телефона =====================
-const phoneInput = document.getElementById('phone_input');
-const phoneButton = document.getElementById('phone_button');
-const phoneResult = document.getElementById('phone_result');
-
-const phoneRegExp = /^(\+7|8)[0-9]{10}$/;
-
-phoneButton.addEventListener('click', () => {
-    const value = phoneInput.value.trim();
-    if (phoneRegExp.test(value)) {
-        phoneResult.textContent = 'Телефон верный';
-        phoneResult.style.color = 'green';
-    } else {
-        phoneResult.textContent = 'Телефон не верный';
-        phoneResult.style.color = 'red';
-    }
-});
-
 // ===================== Проверка ИИН =====================
 const iinInput = document.getElementById('iin_input');
 const iinButton = document.getElementById('iin_button');
