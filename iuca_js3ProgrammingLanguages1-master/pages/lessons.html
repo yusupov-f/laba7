@@ -10,153 +10,161 @@
 <body>
 
 <div class="wrapper">
-    <div class="header">
+
+    <!-- HEADER -->
+    <header class="header">
         <div class="container">
             <div class="inner_header">
-                <a href="../index.html">
-                    <div class="logotype">
-                        <h2>Java<span>Script</span></h2>
-                    </div>
+                <a href="../index.html" class="logotype">
+                    <h2>Java<span>Script</span></h2>
                 </a>
-                <ul class="menu">
-                    <li class="menu_link">
-                        <a href="../pages/home_works.html">Home Works</a>
-                    </li>
-                    <li class="menu_link">
-                        <a href="../pages/lessons.html">Lessons</a>
-                    </li>
-                    <li class="menu_link">
-                        <a href="" target="_blank">Send hw</a>
-                    </li>
-                </ul>
+                <nav>
+                    <ul class="menu">
+                        <li class="menu_link"><a href="../pages/home_works.html">Home Works</a></li>
+                        <li class="menu_link"><a href="../pages/lessons.html">Lessons</a></li>
+                        <li class="menu_link"><a href="../pages/send_hw.html" target="_blank">Send hw</a></li>
+                    </ul>
+                </nav>
                 <button class="btn" id="btn-get">Click me!</button>
             </div>
         </div>
-    </div>
+    </header>
 
-    <!-- Проверка номера Кыргызстан -->
-    <div class="phone_block">
+    <!-- PHONE CHECKER KG -->
+    <section class="phone_block">
         <div class="container">
-            <h3>Phone checker (Кыргызстан)</h3>
+            <h3>Phone Checker (Кыргызстан)</h3>
             <div class="inner_phone_block">
                 <div class="form_phone">
-                    <input type="text" id="kg_phone_input" placeholder="+996 550 64-47-72">
-                    <button class="btn" id="kg_phone_button">Проверить номер</button>
+                    <input type="text" id="kg_phone_input" placeholder="+996 XXX XX-XX-XX">
+                    <button class="btn" id="kg_phone_button">Check number</button>
                     <span class="checker" id="kg_phone_result"></span>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Проверка номера России -->
-    <div class="phone_block">
+    <!-- PHONE CHECKER RU -->
+    <section class="phone_block">
         <div class="container">
-            <h3>Phone checker (Россия)</h3>
+            <h3>Phone Checker (Россия)</h3>
             <div class="inner_phone_block">
                 <div class="form_phone">
-                    <input type="text" id="ru_phone_input" placeholder="+7XXXXXXXXXX или 8XXXXXXXXXX">
-                    <button class="btn" id="ru_phone_button">Проверить номер</button>
+                    <input type="text" id="ru_phone_input" placeholder="+7 922 XXX-XX-XX">
+                    <button class="btn" id="ru_phone_button">Check number</button>
                     <span class="checker" id="ru_phone_result"></span>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- ================= Остальная часть страницы ================= -->
-    <div class="tab_slider">
+    <!-- TAB SLIDER -->
+    <section class="tab_slider">
         <div class="container">
-            <h3>tab slider</h3>
+            <h3>Tab Slider (Фото + описание)</h3>
             <div class="inner_tab_slider">
                 <div class="tab_contents_block">
-                    <div class="tab_content_block">
-                        <h4>Делегирование событий</h4>
-                        <p>В JavaScript делегирование событий - это когда мы используем один обработчик событий для группы элементов.</p>
+
+                    <div class="tab_content_block active">
+                        <img src="https://picsum.photos/300/200?random=1" alt="Coding">
+                        <p>Изучение программирования помогает развивать мышление и понимать, как создаются современные технологии.</p>
                     </div>
+
                     <div class="tab_content_block">
-                        <h4>classList</h4>
-                        <p>classList позволяет добавлять, удалять или проверять наличие классов у элемента.</p>
+                        <img src="https://picsum.photos/300/200?random=2" alt="AI">
+                        <p>Искусственный интеллект меняет мир — от медицины до образования и бизнеса.</p>
                     </div>
+
                     <div class="tab_content_block">
-                        <h4>add()</h4>
-                        <p>Метод add добавляет класс: element.classList.add('new-class')</p>
+                        <img src="https://picsum.photos/300/200?random=3" alt="Teamwork">
+                        <p>Командная работа помогает решать сложные задачи и развивать лидерские навыки.</p>
                     </div>
+
                     <div class="tab_content_block">
-                        <h4>remove()</h4>
-                        <p>Метод remove удаляет класс: element.classList.remove('old-class')</p>
+                        <img src="https://picsum.photos/300/200?random=4" alt="Travel">
+                        <p>Путешествия дают вдохновение, новые идеи и свежий взгляд на жизнь.</p>
                     </div>
-                    <div class="tab_content_block">
-                        <h4>contains()</h4>
-                        <p>Метод contains проверяет наличие класса и возвращает true/false.</p>
-                    </div>
+
                     <div class="tab_content_items">
-                        <div class="tab_content_item tab_content_item_active">Делегирование событий</div>
-                        <div class="tab_content_item">Class List</div>
-                        <div class="tab_content_item">add()</div>
-                        <div class="tab_content_item">remove()</div>
-                        <div class="tab_content_item">contains()</div>
+                        <div class="tab_item active">Coding</div>
+                        <div class="tab_item">AI</div>
+                        <div class="tab_item">Team</div>
+                        <div class="tab_item">Travel</div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="converter">
+    <!-- CONVERTER -->
+    <section class="converter">
         <div class="container">
-            <h3>CONVERTER</h3>
+            <h3>Converter</h3>
             <div class="inner_converter">
                 <div class="som">
                     <label for="som">Som</label>
                     <input type="number" id="som">
                 </div>
                 <div class="usd">
-                    <label for="usd">Usd</label>
+                    <label for="usd">USD</label>
                     <input type="number" id="usd">
                 </div>
                 <div class="eur">
-                    <label for="eur">Eur</label>
+                    <label for="eur">EUR</label>
                     <input type="number" id="eur">
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="card_switcher">
+    <!-- CARD SWITCHER -->
+    <section class="card_switcher">
         <div class="container">
             <h3>Card Switcher</h3>
             <div class="inner_card_switcher">
-                <button class="btn" id="btn-prev">prev</button>
-                <div class="card"></div>
-                <button class="btn" id="btn-next">next</button>
+                <button class="btn" id="btn-prev">Prev</button>
+                <div class="card" id="card">
+                    <p>Карточка 1: Пример текста</p>
+                </div>
+                <button class="btn" id="btn-next">Next</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- WEATHER -->
+    
+   <section class="weather">
+    <div class="container">
+        <h3>Погода</h3>
+        <div class="inner_weather">
+            <div class="weather_input">
+                <input type="text" id="cityInput" placeholder="Введите город...">
+                <button class="btn" id="getWeatherBtn">Найти</button>
+            </div>
+            <div class="weather_result">
+                <span class="city_name"></span>
+                <hr>
+                <span class="temperature"></span>
+                <span class="description"></span>
             </div>
         </div>
     </div>
+</section>
 
-    <div class="weather">
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
         <div class="container">
-            <div class="inner_weather">
-                <div>
-                    <input type="text" class="cityName" placeholder="Найти погоду в...">
-                </div>
-                <div>
-                    <span class="city"></span>
-                    <hr>
-                    <span class="temp"></span>
-                </div>
+            <div class="inner_footer">
+                <h2>Made by</h2>
             </div>
         </div>
-    </div>
+    </footer>
 
-    <div class="footer">
-        <div class="container">
-            <a href="" target="_blank">
-                <div class="inner_footer">
-                    <h2>Made by </h2>
-                </div>
-            </a>
-        </div>
-    </div>
 </div>
 
+<!-- MODAL -->
 <div class="modal">
     <div class="modal_dialog">
         <div class="modal_content">

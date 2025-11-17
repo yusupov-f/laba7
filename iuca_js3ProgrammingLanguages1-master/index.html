@@ -2,122 +2,115 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Java Script</title>
+    <title>JavaScript</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/core.css">
 </head>
 <body>
-
 <div class="wrapper">
-    <div class="header">
+    <!-- HEADER -->
+    <header class="header">
         <div class="container">
             <div class="inner_header">
-                <a href="index.html">
-                    <div class="logotype">
-                        <h2>JavaScript</h2>
-                    </div>
-                </a>
-                <ul class="menu">
-                    <li class="menu_link">
-                        <a href="pages/home_works.html">Home Works</a>
-                    </li>
-                    <li class="menu_link">
-                        <a href="pages/lessons.html">Lessons</a>
-                    </li>
-                    <li class="menu_link">
-                        <a href="" target="_blank">Send hw</a>
-                    </li>
-                </ul>
+                <a href="index.html" class="logotype"><h2>Java<span>Script</span></h2></a>
+                <nav>
+                    <ul class="menu">
+                        <li class="menu_link"><a href="pages/home_works.html">Home Works</a></li>
+                        <li class="menu_link"><a href="pages/lessons.html">Lessons</a></li>
+                        <li class="menu_link"><a href="pages/send_hw.html">Send hw</a></li>
+                    </ul>
+                </nav>
                 <button class="btn" id="btn-get">Click me!</button>
             </div>
         </div>
-    </div>
-    <div class="main_block">
-        <div class="container">
-            <div class="inner_main">
-                <h1><strong id="js-color">JavaScript</strong> - на самом деле очень легко и просто!</h1>
-                <div class="colors-buttons">
-                    <button class="btn btn-color"></button>
-                    <button class="btn btn-color"></button>
-                    <button class="btn btn-color"></button>
-                    <button class="btn btn-color"></button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="slider_block">
-        <div class="container">
-            <div class="inner_slider">
-                <div class="slider">
-                    <button class="btn-slide" id="prev">&lt;prev</button>
-                    <div class="slide active_slide">
-                        <div class="slide_card">
-                            <h3>regular expression</h3>
-                            <p>Простыми словами, регулярное выражение - это набор символов, который задает определенные правила для поиска и сопоставления текста. Вы можете использовать регулярные выражения, чтобы найти определенные строки в тексте, заменить части строки на другие значения или извлечь нужную информацию из текста.</p>
-                            <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Regular_expressions" target="_blank">узнать подробнее</a>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="slide_card">
-                            <h3>recursion</h3>
-                            <p>Простыми словами, рекурсия - это, когда функция делает повторяющиеся вызовы самой себя для решения задачи, пока не достигнет определенного условия выхода из рекурсии.</p>
-                            <a href="https://learn.javascript.ru/recursion" target="_blank">узнать подробнее</a>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="slide_card">
-                            <h3>json</h3>
-                            <p>Простыми словами, JSON - это способ представления данных в виде текста, чтобы они могли быть легко поняты и использованы различными программами. Он использует простые правила для описания объектов и массивов, а также для представления простых типов данных, таких как строки, числа, логические значения и т.д.</p>
-                            <a href="https://developer.mozilla.org/ru/docs/Learn/JavaScript/Objects/JSON" target="_blank">узнать подробнее</a>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="slide_card">
-                            <h3>event loop</h3>
-                            <p>Простыми словами, event loop похож на дежурного, который непрерывно проверяет, произошло ли какое-либо событие, и реагирует на него, когда оно происходит. Он имеет список задач, которые нужно выполнить, и он перебирает этот список событий одно за другим, обрабатывая каждое событие, когда оно наступает.</p>
-                            <a href="https://highload.today/kak-ustroen-event-loop-v-javascript-parallelnaya-model-i-tsikl-sobytij/" target="_blank">узнать подробнее</a>
-                        </div>
-                    </div>
-                    <button class="btn-slide" id="next">next&gt;</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    </header>
 
-    <div class="botlle">
+    <!-- MAIN BLOCK -->
+    <section class="main_block">
+        <div class="container">
+            <h1><strong>JavaScript</strong> - на самом деле очень легко и просто!</h1>
+            <div class="colors-buttons">
+                <button class="btn btn-color"></button>
+                <button class="btn btn-color"></button>
+                <button class="btn btn-color"></button>
+                <button class="btn btn-color"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDER -->
+    <section class="slider_block">
+        <div class="container">
+            <div class="slider">
+                <button class="btn-slide" id="prev">&lt;prev</button>
+                <div class="slide active_slide">
+                    <div class="slide_card">
+                        <h3>regular expression</h3>
+                        <p>Простыми словами, регулярное выражение - это набор символов для поиска текста.</p>
+                        <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Regular_expressions" target="_blank">узнать подробнее</a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide_card">
+                        <h3>recursion</h3>
+                        <p>Рекурсия — когда функция вызывает сама себя до достижения условия выхода.</p>
+                        <a href="https://learn.javascript.ru/recursion" target="_blank">узнать подробнее</a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide_card">
+                        <h3>json</h3>
+                        <p>JSON — это текстовый формат для передачи данных между приложениями.</p>
+                        <a href="https://developer.mozilla.org/ru/docs/Learn/JavaScript/Objects/JSON" target="_blank">узнать подробнее</a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide_card">
+                        <h3>event loop</h3>
+                        <p>Event loop управляет очередью задач и событием в JavaScript.</p>
+                        <a href="https://highload.today/kak-ustroen-event-loop-v-javascript-parallelnaya-model-i-tsikl-sobytij/" target="_blank">узнать подробнее</a>
+                    </div>
+                </div>
+                <button class="btn-slide" id="next">next&gt;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTTLE -->
+    <section class="botlle">
         <div class="container">
             <div class="bottle_inner">
                 <a href="pages/monster.html">
                     <div class="bowl">
                         <div class="shadow"></div>
                         <div class="liquid"></div>
-
                     </div>
                 </a>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="block_video">
+    <!-- VIDEO -->
+    <section class="block_video">
         <div class="container">
             <h3>Полезный ролик про Event Loop</h3>
             <div class="inner_block_video">
-                <iframe width="80%" height="450" src="https://www.youtube.com/embed/zDlg64fsQow" title="YouTube video player" frameborder="2" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe width="80%" height="450" src="https://youtu.be/377qAu37OTE?si=UCRAemSnmoEUQFME" title="YouTube video player" frameborder="2" allowfullscreen></iframe>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="footer">
+    <!-- FOOTER -->
+    <footer class="footer">
         <div class="container">
-            <a href="#" target="_blank">
-                <div class="inner_footer">
-                    <h2>Made by </h2>
-                </div>
-            </a>
+            <div class="inner_footer">
+                <h2>Made by</h2>
+            </div>
         </div>
-    </div>
+    </footer>
 </div>
 
+<!-- MODAL -->
 <div class="modal">
     <div class="modal_dialog">
         <div class="modal_content">
@@ -132,7 +125,7 @@
     </div>
 </div>
 
-</body>
 <script src="js/main.js"></script>
 <script src="js/modal.js"></script>
+</body>
 </html>

@@ -1,19 +1,142 @@
+:root {
+    --accent-color: #ff7f50;
+}
 
-/* GMAIL BLOCK */
+/* HEADER */
+.header {
+    background: linear-gradient(135deg, #111, #1c1c1c);
+    padding: 15px 0;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family: 'Arial', sans-serif;
+}
+
+.logotype h2, .logotype h2 span {
+    background: none;
+    background-color: transparent;
+}
+
+.logotype {
+    background: none;
+    background-color: transparent;
+}
+
+/* Flex контейнер */
+.inner_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Логотип */
+.logotype h2 {
+    color: var(--accent-color);
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.logotype h2 span {
+    color: white;
+}
+
+/* Меню */
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.menu_link a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.menu_link a:hover {
+    background: var(--accent-color);
+    color: black;
+    transform: translateY(-2px);
+}
+
+/* Кнопка в меню */
+.menu_link .btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.menu_link .btn:hover {
+    background: #ffa470;
+    transform: translateY(-2px);
+}
+
+/* Контейнер */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    .inner_header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .menu {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .menu_link .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ---------------- GMAIL BLOCK ---------------- */
 
 .gmail_block {
-    background: black;
+    background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
     padding: 100px 0;
+    transition: background 1s ease;
+}
+
+.gmail_block:hover {
+    background: linear-gradient(135deg, #222, #111);
 }
 
 .inner_gmail_block {
     margin-top: 50px;
     display: flex;
-    justify-content: space-evenly;
-    border: 1px solid var(--orange);
+    justify-content: space-around;
+    border: 2px solid var(--accent-color);
     height: 300px;
-    border-radius: 20px;
+    border-radius: 25px;
     align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    transition: transform 0.5s ease;
+}
+
+.inner_gmail_block:hover {
+    transform: scale(1.03);
 }
 
 .form_gmail {
@@ -25,45 +148,66 @@
 .form_gmail button {
     width: 100%;
     margin: 20px 0;
+    padding: 10px 20px;
+    background: var(--accent-color);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-/* MOVE BLOCK */
+.form_gmail button:hover {
+    background: #ffa470;
+    transform: translateY(-3px);
+}
+
+/* ---------------- MOVE BLOCK ---------------- */
 
 .move_block {
-    background: black;
+    background: linear-gradient(120deg, #0f0f0f, #1a1a1a);
     padding: 100px 0;
 }
 
 .parent_block {
-    height: 500px;
-    width: 500px;
-    border: 1px solid var(--orange);
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(145deg, #eee, #ccc);
     position: relative;
     margin: 0 auto;
+    border: 2px solid var(--accent-color);
+    border-radius: 20px;
+    overflow: hidden;
+    animation: rotateParent 15s linear infinite;
 }
 
-.inner_parent_block {
-    height: 400px;
-    width: 400px;
-    border: 1px solid var(--orange);
-    border-radius: 18px;
+@keyframes rotateParent {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .child_block {
     position: absolute;
     top: 0;
+    left: 0;
     width: 50px;
     height: 50px;
-    background-color: red;
+    background: crimson;
+    border-radius: 50%;
+    animation: bounce 2s ease-in-out infinite alternate;
 }
 
-
+@keyframes bounce {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(350px, 350px); }
+}
 
 .inner_move_block {
     margin-top: 50px;
 }
 
-/*----ANALOG CLOCK-----*/
+/* ---------------- ANALOG CLOCK ---------------- */
 
 .clock {
     --clock-size: 360px;
@@ -74,122 +218,66 @@
     margin: auto;
     border-radius: 50%;
     color: white;
+    background: radial-gradient(circle, #111 0%, #333 100%);
+    box-shadow: 0 0 40px rgba(255, 127, 80, 0.5);
+    animation: pulse 2s infinite alternate;
 }
 
-.spike {
-    position: absolute;
-    width: 8px;
-    height: 1px;
-    background: #fff9;
-    line-height: 20px;
-    transform-origin: 50%;
-    z-index: 5;
-    inset: 0;
-    margin: auto;
-    font-style: normal;
-    transform: rotate(var(--rotate)) translateX(var(--dail-size));
-}
-.spike:nth-child(5n+1) {
-    box-shadow: -7px 0 #fff9;
-}
-.spike:nth-child(5n+1):after {
-    content: attr(data-i);
-    position: absolute;
-    right: 22px;
-    top: -10px;
-    transition: 1s linear;
-    transform: rotate(calc( var(--dRotate) - var(--rotate)));
+@keyframes pulse {
+    0% { box-shadow: 0 0 20px rgba(255,127,80,0.3); }
+    100% { box-shadow: 0 0 40px rgba(255,127,80,0.8); }
 }
 
-.seconds {
-    --dRotate: 0deg;
-    --dail-size: calc((var(--clock-size)/ 2) - 8px);
-    font-weight: 800;
-    font-size: 18px;
-    transform: rotate(calc( -1 * var(--dRotate)));
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    transition: 1s linear;
-}
+/* ---------------- STOPWATCH ---------------- */
 
-.minutes {
-    --dail-size: calc((var(--clock-size)/ 2) - 65px);
-    font-size: 16px;
-    transform: rotate(calc( -1 * var(--dRotate)));
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    transition: 1s linear;
+.stopwatch {
+    padding: 100px 0;
+    background: linear-gradient(120deg, #000, #111);
 }
-
-.stop-anim {
-    transition: 0s linear;
-}
-.stop-anim .spike:after {
-    transition: 0s linear !important;
-}
-
-.hour {
-    font-size: 70px;
-    font-weight: 900;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.minute {
-    font-size: 36px;
-    font-weight: 900;
-    position: absolute;
-    background: #000;
-    z-index: 10;
-    right: calc(var(--clock-size)/ 4.5);
-    top: 50%;
-    transform: translateY(-50%);
-}
-.minute:after {
-    content: "";
-    position: absolute;
-    border: 2px solid #fff;
-    border-right: none;
-    height: 50px;
-    left: -10px;
-    top: 50%;
-    border-radius: 40px 0 0 40px;
-    width: calc(var(--clock-size)/ 2.75);
-    transform: translatey(-50%);
-}
-
-
-/*-------STOP WATCH------ */
 
 .time {
-    color: white;
+    color: var(--accent-color);
     display: flex;
     justify-content: center;
     font-size: 80px;
     height: 100px;
     width: 100%;
-    border-bottom: 1px solid var(--orange);
+    border-bottom: 2px solid var(--accent-color);
     margin-top: 40px;
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 10px var(--accent-color); }
+    100% { text-shadow: 0 0 30px var(--accent-color); }
 }
 
 .time_block {
     display: flex;
     width: 500px;
     justify-content: space-between;
-}
-
-.stopwatch {
-    padding: 100px 0;
-    background: black;
+    margin: 0 auto;
 }
 
 .time_buttons {
     margin-top: 30px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+
+.time_buttons button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    background: var(--accent-color);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.time_buttons button:hover {
+    background: #ffa470;
+    transform: scale(1.05);
 }

@@ -26,7 +26,7 @@
                         <a href="../pages/lessons.html">Lessons</a>
                     </li>
                     <li class="menu_link">
-                        <a href="" target="_blank">Send hw</a>
+                        <a href="../pages/send_hw.html">Send hw</a>
                     </li>
                 </ul>
                 <button class="btn" id="btn-get">Click me!</button>
@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <!-- Проверка Gmail -->
+    <!-- CHECK GMAIL -->
     <div class="gmail_block">
         <div class="container">
             <h3>Home work 1 (Gmail)</h3>
@@ -48,13 +48,27 @@
         </div>
     </div>
 
-    <!-- Проверка ИИН -->
+    <!-- CHECK PHONE -->
     <div class="gmail_block">
         <div class="container">
-            <h3>Home work 2 (ИИН)</h3>
+            <h3>Home work 1 (Номер телефона)</h3>
             <div class="inner_gmail_block">
                 <div class="form_gmail">
-                    <input type="text" id="iin_input" placeholder="Введите ИИН (12 цифр)">
+                    <input type="text" id="phone_input" placeholder="Введите номер (+7...)">
+                    <button class="btn" id="phone_button">Проверить номер</button>
+                    <span class="checker" id="phone_result"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECK IIN -->
+    <div class="gmail_block">
+        <div class="container">
+            <h3>Home work 1 (ИИН)</h3>
+            <div class="inner_gmail_block">
+                <div class="form_gmail">
+                    <input type="text" id="iin_input" placeholder="Введите ИИН (14 цифр)">
                     <button class="btn" id="iin_button">Проверить ИИН</button>
                     <span class="checker" id="iin_result"></span>
                 </div>
@@ -62,10 +76,10 @@
         </div>
     </div>
 
-    <!-- Остальные блоки -->
+    <!-- ANIMATION -->
     <div class="move_block">
         <div class="container">
-            <h3>Home work 3 (part 2)</h3>
+            <h3>Home work 1 (part 2)</h3>
             <div class="inner_move_block">
                 <div class="parent_block">
                     <div class="child_block"></div>
@@ -74,9 +88,10 @@
         </div>
     </div>
 
+    <!-- STOPWATCH -->
     <div class="stopwatch">
         <div class="container">
-            <h3>Home work 4 </h3>
+            <h3>Home work 2 </h3>
             <div class="time">
                 <div class="time_block">
                     <div class="interval" id="minutesS">00</div>
@@ -98,7 +113,7 @@
         <div class="container">
             <a href="" target="_blank">
                 <div class="inner_footer">
-                    <h2>Made by </h2>
+                    <h2>Made by</h2>
                 </div>
             </a>
         </div>
@@ -110,10 +125,10 @@
         <div class="modal_content">
             <form action="#">
                 <div class="modal_close">&times;</div>
-                <div class="modal_title">Мы свяжемся с вами как можно быстрее!</div>
+                <div class="modal_title">Оставьте заявку и мы вам перезвоним!</div>
                 <input required placeholder="Ваше имя" name="name" type="text" class="modal_input">
                 <input required placeholder="Ваш номер телефона" name="phone" type="phone" class="modal_input">
-                <button class="btn btn_dark btn_min">Перезвонить мне</button>
+                <button class="btn btn_dark btn_min">Отправить</button>
             </form>
         </div>
     </div>

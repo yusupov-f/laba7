@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send HW</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/core.css">
+</head>
+<body>
+
+<div class="wrapper">
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <div class="inner_header">
+                <a href="../index.html" class="logotype">
+                    <h2>Java<span>Script</span></h2>
+                </a>
+                <ul class="menu">
+                    <li class="menu_link"><a href="home_works.html">Home Works</a></li>
+                    <li class="menu_link"><a href="lessons.html">Lessons</a></li>
+                    <li class="menu_link"><a href="send_hw.html">Send HW</a></li>
+                </ul>
+                <button class="btn" id="btn-get">Click me!</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- PORTFOLIO -->
+    <section class="portfolio">
+        <div class="container">
+            <h3>Моё портфолио</h3>
+
+            <!-- Форма добавления проекта -->
+            <div class="add_project_form">
+                <h4>Добавить новый проект</h4>
+                <input type="text" id="projectName" placeholder="ФИО автора">
+                <input type="text" id="projectTitle" placeholder="Название проекта">
+                <input type="text" id="projectDesc" placeholder="Описание проекта">
+                <input type="text" id="projectImg" placeholder="Ссылка на изображение">
+                <button id="addProjectBtn" class="btn">Добавить проект</button>
+            </div>
+
+            <!-- Сетка портфолио -->
+            <div class="portfolio_grid">
+                <!-- Карточки проектов будут добавляться через JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="inner_footer">
+                <h2>Made by</h2>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<script src="../js/send_hw.js"></script>
+</body>
+</html>

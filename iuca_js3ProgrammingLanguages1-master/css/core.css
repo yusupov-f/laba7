@@ -122,3 +122,14 @@ input {
 :root {
     --orange: orange
 }
+body {
+    font-family: "Britannic Bold", sans-serif;
+    background: linear-gradient(135deg, #111, #1c1c1c);
+    color: white; /* чтобы текст был виден на темном фоне */
+}
+.main_block,
+.slider_block,
+.botlle,
+.block_video {
+    background: linear-gradient(135deg, #111, #1c1c1c);
+}

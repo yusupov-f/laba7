@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Онлайн чат — демо</title>
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#6ee7b7; --muted:#94a3b8; --me:#025e5e;
+      --glass: rgba(255,255,255,0.03);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:linear-gradient(180deg,#081025 0%, #07111b 100%); color:#e6eef6; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      display:flex; align-items:center; justify-content:center; padding:24px;
+    }
+    .app{
+      width:100%; max-width:980px; height:80vh; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:14px; box-shadow: 0 10px 30px rgba(2,6,23,0.7); overflow:hidden; display:grid; grid-template-columns: 300px 1fr;
+    }
+    /* SIDEBAR */
+    .sidebar{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005)); padding:16px; border-right:1px solid rgba(255,255,255,0.03);}
+    .brand{display:flex; gap:12px; align-items:center; margin-bottom:12px}
+    .logo{width:42px; height:42px; border-radius:10px; background:linear-gradient(135deg,var(--accent),#60a5fa); display:flex; align-items:center; justify-content:center; color:#022; font-weight:700}
+    .brand h1{font-size:16px; margin:0}
+    .convos{margin-top:10px; overflow:auto; height:calc(80vh - 120px);}
+    .convo{padding:10px; border-radius:10px; display:flex; gap:10px; align-items:center; cursor:pointer; margin-bottom:8px}
+    .convo:hover{background:var(--glass)}
+    .avatar{width:40px; height:40px; border-radius:8px; background:#0b2440; display:flex; align-items:center; justify-content:center}
+    .meta{flex:1}
+    .meta small{display:block; color:var(--muted)}
+
+    /* CHAT AREA */
+    .chat{display:flex; flex-direction:column; height:100%;}
+    .chat-header{padding:16px; border-bottom:1px solid rgba(255,255,255,0.03); display:flex; gap:12px; align-items:center}
+    .chat-body{flex:1; padding:18px; overflow:auto; display:flex; flex-direction:column; gap:12px; background-image: linear-gradient(180deg, rgba(255,255,255,0.001), transparent);}
+    .messages{display:flex; flex-direction:column; gap:10px; max-width:900px}
+    .msg{display:flex; gap:12px; align-items:flex-end}
+    .msg .bubble{padding:10px 14px; border-radius:12px; max-width:70%; line-height:1.35}
+    .msg.bot .bubble{background:rgba(255,255,255,0.03); color:var(--muted); border:1px solid rgba(255,255,255,0.02)}
+    .msg.me{justify-content:flex-end}
+    .msg.me .bubble{background:linear-gradient(90deg,var(--me), #064e4e); color:white}
+    .bubble small{display:block; font-size:11px; color:rgba(255,255,255,0.6); margin-top:6px}
+
+    .composer{padding:12px; border-top:1px solid rgba(255,255,255,0.03); display:flex; gap:8px; align-items:flex-end}
+    .composer textarea{resize:none; width:100%; min-height:44px; max-height:140px; background:transparent; border-radius:10px; border:1px solid rgba(255,255,255,0.03); padding:10px 12px; color:inherit; outline:none}
+    .actions{display:flex; gap:8px}
+    .btn{border:0; background:var(--accent); color:#012; padding:10px 12px; border-radius:10px; cursor:pointer}
+    .btn.ghost{background:transparent; border:1px solid rgba(255,255,255,0.03)}
+    .typing{font-size:13px; color:var(--muted); margin-left:8px}
+
+    /* small screens */
+    @media (max-width:800px){
+      .app{grid-template-columns:1fr; height:92vh}
+      .sidebar{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="app" role="application">
+    <aside class="sidebar" aria-label="Список чатов">
+      <div class="brand">
+        <div class="logo">OC</div>
+        <div>
+          <h1>Онлайн чат</h1>
+          <small style="color:var(--muted)">Локальная демо-версия</small>
+        </div>
+      </div>
+
+      <div>
+        <input id="newConvoName" placeholder="Новый чат" style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.03); background:transparent; color:inherit" />
+        <div style="margin-top:8px; display:flex; gap:8px">
+          <button id="createConvo" class="btn">Создать</button>
+          <button id="clearAll" class="btn ghost">Очистить</button>
+        </div>
+      </div>
+
+      <div class="convos" id="convosList" aria-live="polite"></div>
+    </aside>
+
+    <main class="chat">
+      <header class="chat-header">
+        <div class="avatar" aria-hidden="true">B</div>
+        <div style="flex:1">
+          <strong id="chatTitle">Чат</strong>
+          <div class="typing" id="typingIndicator" style="display:none">собеседник печатает...</div>
+        </div>
+        <div style="display:flex; gap:8px; align-items:center">
+          <button id="exportBtn" class="btn ghost">Экспорт</button>
+        </div>
+      </header>
+
+      <section class="chat-body" id="chatBody">
+        <div class="messages" id="messages"></div>
+      </section>
+
+      <div class="composer" role="region" aria-label="Отправить сообщение">
+        <textarea id="messageInput" placeholder="Напишите сообщение (Shift+Enter — новая строка)" aria-label="Текст сообщения"></textarea>
+        <div class="actions">
+          <button id="sendBtn" class="btn">Отправить</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Простая single-page chat demo — frontend only.
+    const storageKey = 'oc_demo_chats_v1';
+    let state = {conversations:[], currentId: null};
+
+    // helpers
+    const uid = ()=> Math.random().toString(36).slice(2,10);
+    const nowTime = ()=> new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+
+    // load/save
+    function load(){
+      try{
+        const raw = localStorage.getItem(storageKey);
+        if(raw) state = JSON.parse(raw);
+      }catch(e){console.error(e)}
+    }
+    function save(){ localStorage.setItem(storageKey, JSON.stringify(state)); }
+
+    // create default convo
+    function ensureDefault(){ if(state.conversations.length===0){
+      const c = {id:uid(), name:'Общий', messages:[{id:uid(), who:'bot', text:'Привет! Это локальный демо-чат. Пишите что угодно — я отвечу примитивно.', t:Date.now()}]};
+      state.conversations.push(c); state.currentId = c.id; save();
+    }}
+
+    // render sidebar convos
+    function renderConvos(){
+      const el = document.getElementById('convosList'); el.innerHTML='';
+      state.conversations.forEach(c=>{
+        const div = document.createElement('div'); div.className='convo'; div.tabIndex=0;
+        div.onclick = ()=>{ state.currentId = c.id; save(); renderAll(); };
+        div.innerHTML = `<div class="avatar">${c.name[0]||'C'}</div><div class="meta"><strong>${c.name}</strong><small>${(c.messages.length? new Date(c.messages[c.messages.length-1].t).toLocaleString(): '')}</small></div>`;
+        el.appendChild(div);
+      })
+    }
+
+    // render messages
+    function renderMessages(){
+      const container = document.getElementById('messages'); container.innerHTML = '';
+      const convo = state.conversations.find(x=>x.id===state.currentId);
+      if(!convo) return;
+      document.getElementById('chatTitle').textContent = convo.name;
+      convo.messages.forEach(m=>{
+        const wrap = document.createElement('div'); wrap.className = 'msg ' + (m.who==='me' ? 'me' : 'bot');
+        const bubble = document.createElement('div'); bubble.className = 'bubble';
+        bubble.innerHTML = `<div>${escapeHtml(m.text).replace(/\n/g,'<br>')}</div><small>${new Date(m.t).toLocaleString()}${m.who==='me'? ' • отправлено' : ''}</small>`;
+        wrap.appendChild(bubble);
+        container.appendChild(wrap);
+      });
+      // auto-scroll to bottom
+      container.parentElement.scrollTop = container.parentElement.scrollHeight;
+    }
+
+    function renderAll(){ renderConvos(); renderMessages(); }
+
+    // send message
+    function sendMessage(text){ if(!text.trim()) return; const convo = state.conversations.find(x=>x.id===state.currentId); if(!convo) return;
+      const m = {id:uid(), who:'me', text:text, t:Date.now()}; convo.messages.push(m); save(); renderMessages(); simulateReply(convo);
+    }
+
+    // naive bot reply (simulated) — replace with websocket/backend later
+    function simulateReply(convo){
+      const indicator = document.getElementById('typingIndicator'); indicator.style.display='block';
+      setTimeout(()=>{
+        const last = convo.messages[convo.messages.length-1];
+        const replyText = smartReply(last.text);
+        convo.messages.push({id:uid(), who:'bot', text:replyText, t:Date.now()});
+        indicator.style.display='none'; save(); renderMessages();
+      }, 700 + Math.random()*900);
+    }
+
+    function smartReply(text){
+      // very small heuristic-based replies
+      const lower = text.toLowerCase();
+      if(lower.includes('привет') || lower.includes('здравств')) return 'Привет! Как настроение?';
+      if(lower.includes('как дела')) return 'Всё ок — демо-чат отвечает! А у тебя?';
+      if(lower.includes('пока') || lower.includes('до свидания')) return 'Пока! Был рад помочь.';
+      if(lower.length<20) return 'Интересно — расскажите подробнее.';
+      return 'Спасибо — я получил ваше сообщение. (Это автоматический ответ демо-чата)';
+    }
+
+    // small escaping
+    function escapeHtml(str){ return str.replace(/[&<>\"]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s])); }
+
+    // UI wiring
+    document.getElementById('sendBtn').addEventListener('click', ()=>{
+      const t = document.getElementById('messageInput'); sendMessage(t.value); t.value=''; t.focus();
+    });
+    document.getElementById('messageInput').addEventListener('keydown', (e)=>{
+      if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); document.getElementById('sendBtn').click(); }
+    });
+
+    document.getElementById('createConvo').addEventListener('click', ()=>{
+      const name = document.getElementById('newConvoName').value.trim() || 'Новый чат';
+      const c = {id:uid(), name, messages:[]}; state.conversations.unshift(c); state.currentId=c.id; document.getElementById('newConvoName').value=''; save(); renderAll();
+    });
+
+    document.getElementById('clearAll').addEventListener('click', ()=>{
+      if(!confirm('Удалить все чаты и историю?')) return; state = {conversations:[], currentId:null}; save(); ensureDefault(); renderAll();
+    });
+
+    document.getElementById('exportBtn').addEventListener('click', ()=>{
+      const data = JSON.stringify(state, null, 2);
+      const blob = new Blob([data], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href=url; a.download = 'chats_export.json'; a.click(); URL.revokeObjectURL(url);
+    });
+
+    // init
+    load(); ensureDefault(); renderAll();
+  </script>
+</body>
+</html>
